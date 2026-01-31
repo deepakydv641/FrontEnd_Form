@@ -48,8 +48,6 @@ function App() {
     address: "",
   });
 
-  
-
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
       <Header step={step} />
@@ -124,14 +122,16 @@ function App() {
           )}
 
           <div className="flex gap-4 mt-6">
-            <button
-              onClick={prevStep}
-              disabled={step === 1}
-              className="px-4 py-2 border rounded"
-            >
-              Back
-            </button>
-            <bttn/>
+            {step != 1 && (
+              <button
+                onClick={prevStep}
+                disabled={step === 1}
+                className="px-4 py-2 border rounded"
+              >
+                Back
+              </button>
+            )}
+            <bttn />
             <button
               onClick={nextStep}
               className="px-4 py-2 bg-blue-600 text-white rounded"
