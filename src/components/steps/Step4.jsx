@@ -1,4 +1,4 @@
-function Step4({ formData, setFormData }) {
+function Step4({ formData, setFormData, step, setStep }) {
   return (
     <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
       {/* Header */}
@@ -10,7 +10,7 @@ function Step4({ formData, setFormData }) {
           </p>
         </div>
         <span className="bg-blue-50 text-blue-600 text-xs font-bold px-3 py-1.5 rounded uppercase tracking-wide">
-          Step 4 of 8
+          Step {step} of 8
         </span>
       </div>
       </div>

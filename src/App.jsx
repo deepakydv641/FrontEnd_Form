@@ -48,17 +48,7 @@ function App() {
     address: "",
   });
 
-  function bttn() {
-    return (
-      <button
-        onClick={prevStep}
-        disabled={step === 1}
-        className="px-4 py-2 border rounded"
-      >
-        Back
-      </button>
-    );
-  }
+  
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
