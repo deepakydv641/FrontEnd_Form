@@ -10,6 +10,9 @@ import Step5 from "./components/steps/Step5";
 import Step6 from "./components/steps/Step6";
 import Step7 from "./components/steps/Step7";
 import Step8 from "./components/steps/Step8";
+import { Routes, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function App() {
   const [step, setStep] = useState(1);
@@ -19,6 +22,7 @@ function App() {
   function nextStep() {
     if (step < 8) setStep(step + 1);
     fun1();
+
   }
 
   function prevStep() {
@@ -48,6 +52,17 @@ function App() {
     address: "",
   });
 
+  const steps = [
+    { stp: 1, title: "Personal Details", path: "/" },
+    { stp: 2, title: "Academic Profile", path: "/academic" },
+    { stp: 3, title: "Employment History", path: "/employment" },
+    { stp: 4, title: "Publications", path: "/publications" },
+    { stp: 5, title: "Awards & Patents", path: "/awards" },
+    { stp: 6, title: "References", path: "/references" },
+    { stp: 7, title: "Upload Documents", path: "/documents" },
+    { stp: 8, title: "Declaration", path: "/declaration" },
+  ];
+
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
       <Header step={step} />
@@ -56,71 +71,98 @@ function App() {
           <Sidebar />
         </div>
         <main className="flex-1 p-10">
-          {step === 1 && (
-            <Step1
-              formData={formData}
-              setFormData={setFormData}
-              step={step}
-              setStep={setStep}
-            />
-          )}
-          {step === 2 && (
-            <Step2
-              formData={formData}
-              setFormData={setFormData}
-              step={step}
-              setStep={setStep}
-            />
-          )}
-          {step === 3 && (
-            <Step3
-              formData={formData}
-              setFormData={setFormData}
-              step={step}
-              setStep={setStep}
-            />
-          )}
-          {step === 4 && (
-            <Step4
-              formData={formData}
-              setFormData={setFormData}
-              step={step}
-              setStep={setStep}
-            />
-          )}
-          {step === 5 && (
-            <Step5
-              formData={formData}
-              setFormData={setFormData}
-              step={step}
-              setStep={setStep}
-            />
-          )}
-          {step === 6 && (
-            <Step6
-              formData={formData}
-              setFormData={setFormData}
-              step={step}
-              setStep={setStep}
-            />
-          )}
-          {step === 7 && (
-            <Step7
-              formData={formData}
-              setFormData={setFormData}
-              step={step}
-              setStep={setStep}
-            />
-          )}
-          {step === 8 && (
-            <Step8
-              formData={formData}
-              setFormData={setFormData}
-              step={step}
-              setStep={setStep}
-            />
-          )}
-
+          <div className="flex-1 p-6">
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <Step1
+                    formData={formData}
+                    setFormData={setFormData}
+                    step={1}
+                    setStep={setStep}
+                  />
+                }
+              />
+              <Route
+                path="/Academic"
+                element={
+                  <Step2
+                    formData={formData}
+                    setFormData={setFormData}
+                    step={2}
+                    setStep={setStep}
+                  />
+                }
+              />
+              <Route
+                path="/employment"
+                element={
+                  <Step3
+                    formData={formData}
+                    setFormData={setFormData}
+                    step={3}
+                    setStep={setStep}
+                  />
+                }
+              />
+              <Route
+                path="/publications"
+                element={
+                  <Step4
+                    formData={formData}
+                    setFormData={setFormData}
+                    step={4}
+                    setStep={setStep}
+                  />
+                }
+              />
+              <Route
+                path="/awards"
+                element={
+                  <Step5
+                    formData={formData}
+                    setFormData={setFormData}
+                    step={5}
+                    setStep={setStep}
+                  />
+                }
+              />
+              <Route
+                path="/references"
+                element={
+                  <Step6
+                    formData={formData}
+                    setFormData={setFormData}
+                    step={6}
+                    setStep={setStep}
+                  />
+                }
+              />
+              <Route
+                path="/documents"
+                element={
+                  <Step7
+                    formData={formData}
+                    setFormData={setFormData}
+                    step={7}
+                    setStep={setStep}
+                  />
+                }
+              />
+              <Route
+                path="/declaration"
+                element={
+                  <Step8
+                    formData={formData}
+                    setFormData={setFormData}
+                    step={8}
+                    setStep={setStep}
+                  />
+                }
+              />
+            </Routes>
+          </div>
           <div className="flex gap-4 mt-6">
             {step != 1 && (
               <button
