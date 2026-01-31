@@ -2,6 +2,7 @@ function Step1({ formData, setFormData, step, setStep }) {
   return (
     <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
       {/* Header */}
+      
       <div className="flex items-start justify-between mb-6 pb-6 border-b border-gray-100">
         <div>
           <h2 className="text-2xl font-bold text-gray-900 mb-1">Personal Information</h2>

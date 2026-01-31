@@ -12,22 +12,36 @@ import Step7 from "./components/steps/Step7";
 import Step8 from "./components/steps/Step8";
 import { Routes, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 function App() {
   const [step, setStep] = useState(1);
 
   const [btn, setbtn] = useState("Save & Next");
 
-  function nextStep() {
-    if (step < 8) setStep(step + 1);
-    fun1();
+  const navigate = useNavigate();
+  const location=useLocation();
 
+  function nextStep() {
+    if (step < 8) {
+      const next = step + 1;
+      setStep(next);
+      const stepobj = steps.find((s) => s.stp === next);
+      navigate(stepobj.path);
+      fun1();
+    }
   }
 
   function prevStep() {
-    if (step > 1) setStep(step - 1);
-    fun2();
+    if (step > 1) {
+      const next = step - 1; 
+      setStep(next);
+      const stepobj = steps.find((s) => s.stp === next);
+      navigate(stepobj.path);
+      fun2();
+    }
   }
 
   function fun1() {
@@ -62,7 +76,21 @@ function App() {
     { stp: 7, title: "Upload Documents", path: "/documents" },
     { stp: 8, title: "Declaration", path: "/declaration" },
   ];
-
+  useEffect(()=>{
+    const stepobj=steps.find((s)=>s.path===location.pathname);
+    const nextStep=stepobj.stp;
+    if(stepobj){
+      setStep(stepobj.stp);
+    }
+    if(nextStep===8){
+      setbtn("Submit");
+    }
+    else{
+      setbtn("Save & Next");
+    }
+  }
+    ,[location.pathname]
+  );
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
       <Header step={step} />
